@@ -198,7 +198,7 @@ def get_topics(title_similarity, num_topics = 8, bonus_constant = 0.25, min_size
       
   # Set the chosen partitioning to be the one with highest modularity
   topics_title = topics_title_accepted[lowest_sd_iteration] 
-  st_write("Clustering...")
+  st.write("Clustering...")
   # print(f'Best SD: {lowest_sd}, Best iteration: {lowest_sd_iteration}')
   
   topic_id_means = [sum(e)/len(e) for e in topics_title]
