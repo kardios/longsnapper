@@ -129,7 +129,7 @@ def summarize_stage_1(chunks_text):
   map_prompt = PromptTemplate(template=map_prompt_template, input_variables=["text"])
 
   # Define the LLMs
-  map_llm = OpenAI(temperature=0, model_name = MODEL_NAME)
+  map_llm = OpenAI(temperature=0, model_name = MODEL_NAME, openai_api_key = API_KEY)
   map_llm_chain = LLMChain(llm = map_llm, prompt = map_prompt)
   map_llm_chain_input = [{'text': t} for t in chunks_text]
   # Run the input through the LLM chain (works in parallel)
@@ -269,7 +269,7 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
   
   # print('topics_titles_concat_all', topics_titles_concat_all)
 
-  title_llm = OpenAI(temperature=0, model_name = MODEL_NAME)
+  title_llm = OpenAI(temperature=0, model_name = MODEL_NAME, openai_api_key = API_KEY)
   title_llm_chain = LLMChain(llm = title_llm, prompt = title_prompt)
   title_llm_chain_input = [{'text': topics_titles_concat_all}]
   title_llm_chain_results = title_llm_chain.apply(title_llm_chain_input)
@@ -281,8 +281,8 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
   # Remove spaces at start or end of each title
   titles = [t.strip() for t in titles]
 
-  map_llm = OpenAI(temperature=0, model_name = MODEL_NAME)
-  reduce_llm = OpenAI(temperature=0, model_name = MODEL_NAME, max_tokens = -1)
+  map_llm = OpenAI(temperature=0, model_name = MODEL_NAME, openai_api_key = API_KEY)
+  reduce_llm = OpenAI(temperature=0, model_name = MODEL_NAME, max_tokens = -1, openai_api_key = API_KEY)
 
   # Run the map-reduce chain
   docs = [Document(page_content=t) for t in topics_summary_concat]
