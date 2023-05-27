@@ -3,3 +3,4 @@ openai >= 0.27.6
 scipy
 networkx
 langchain
+tiktoken
