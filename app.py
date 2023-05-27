@@ -1,7 +1,7 @@
 import time
 import os
-import openai
 import streamlit as st
+import openai
 import pandas as pd
 import numpy as np
 import json
