@@ -11,8 +11,6 @@ import numpy as np
 import json
 import os
 import time
-import matplotlib.pyplot as plt
-import seaborn as sns; sns.set()
 from scipy.spatial.distance import cosine
 import networkx as nx
 from networkx.algorithms import community
