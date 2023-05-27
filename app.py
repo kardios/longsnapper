@@ -5,7 +5,7 @@ import openai
 import streamlit as st
 
 API_KEY = os.environ["OPENAI_KEY"]
-openai.api_key = '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'
+openai.api_key = API_KEY
 
 import pandas as pd
 import numpy as np
