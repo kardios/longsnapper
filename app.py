@@ -317,7 +317,7 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
 
 txt = st.text_area("I am your AI-powered reading assistant for longform pieces. Enter the text you want me to summarise:")
 
-if st.button('Let's Go!'):
+if st.button('Let\'s Go!'):
 
   # Get segments from txt by splitting on .
   segments =  txt.split('.')
