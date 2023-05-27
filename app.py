@@ -333,7 +333,7 @@ if st.button('Let\'s Go!'):
   num_1_chunks = len(stage_1_summaries)
 
   # Use OpenAI to embed the summaries and titles. Size of _embeds: (num_chunks x 1536)
-  openai_embed = OpenAIEmbeddings()
+  openai_embed = OpenAIEmbeddings(openai_api_key = API_KEY)
 
   summary_embeds = np.array(openai_embed.embed_documents(stage_1_summaries))
   title_embeds = np.array(openai_embed.embed_documents(stage_1_titles))
