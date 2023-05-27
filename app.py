@@ -17,7 +17,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.docstore.document import Document
 from langchain.chains.summarize import load_summarize_chain
 
-API_KEY = os.environ["OPENAI_API_KEY"]
+API_KEY = os.environ["OPENAI_KEY"]
 openai.api_key = API_KEY
 MODEL_NAME = "text-davinci-003"
 
