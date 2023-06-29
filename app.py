@@ -16,10 +16,14 @@ from langchain.chains.llm import LLMChain
 from langchain.embeddings import OpenAIEmbeddings
 from langchain.docstore.document import Document
 from langchain.chains.summarize import load_summarize_chain
+from PyPDF2 import PdfReader
 
 API_KEY = os.environ["OPENAI_KEY"]
 openai.api_key = API_KEY
 MODEL_NAME = "text-davinci-003"
+
+st.sidebar.write("**Settings**")
+Option_Input = st.sidebar.radio("Input", ('pdf','text'))
 
 #############
 # FUNCTIONS #
@@ -308,7 +312,21 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
 ## MAIN SCRIPT STARTS HERE ## 
 #############################
 
-txt = st.text_area("**Longsummer** Beta is your AI-powered reading assistant for longform text. Enter the longform text to summarise below:")
+if Option_Input == 'pdf':
+  uploaded_file = st.file_uploader("**Upload** the PDF document you want me to analyse for you.", type = "pdf")
+  raw_text = ""
+  if uploaded_file is not None:
+    doc_reader = PdfReader(uploaded_file)
+    for i, page in enumerate(doc_reader.pages):
+      text = page.extract_text()
+      if text:
+        raw_text = raw_text + text + "\n"
+  
+if Option_Input == 'text':
+  raw_text = st.text_area("**Longsummer** Beta is your AI-powered reading assistant for longform text. Enter the longform text to summarise below:")
+
+if st.button('Let\'s Go!'):
+  txt = input_text
 
 if st.button('Let\'s Go!'):
 
