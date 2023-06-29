@@ -22,9 +22,6 @@ API_KEY = os.environ["OPENAI_KEY"]
 openai.api_key = API_KEY
 MODEL_NAME = "text-davinci-003"
 
-st.sidebar.write("**Settings**")
-Option_Input = st.sidebar.radio("Input", ('pdf','text'))
-
 #############
 # FUNCTIONS #
 #############
@@ -312,6 +309,9 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
 ## MAIN SCRIPT STARTS HERE ## 
 #############################
 
+st.sidebar.write("**Settings**")
+Option_Input = st.sidebar.radio("Input", ('pdf','text'))
+
 if Option_Input == 'pdf':
   uploaded_file = st.file_uploader("**Upload** the PDF document you want me to analyse for you.", type = "pdf")
   raw_text = ""
@@ -323,12 +323,11 @@ if Option_Input == 'pdf':
         raw_text = raw_text + text + "\n"
   
 if Option_Input == 'text':
-  raw_text = st.text_area("**Longsummer** Beta is your AI-powered reading assistant for longform text. Enter the longform text to summarise below:")
+  raw_text = st.text_area("**Enter** the text you want me to analyse in the box below.")
 
 if st.button('Let\'s Go!'):
-  txt = input_text
 
-if st.button('Let\'s Go!'):
+  txt = raw_text
 
   # Get segments from txt by splitting on .
   segments =  txt.split('.')
