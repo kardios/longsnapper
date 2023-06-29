@@ -308,7 +308,7 @@ def summarize_stage_2(stage_1_outputs, topics, summary_num_words = 250):
 ## MAIN SCRIPT STARTS HERE ## 
 #############################
 
-txt = st.text_area("**Longsnapper** Beta is your AI-powered reading assistant for longform text. Enter the longform text to summarise below:")
+txt = st.text_area("**Longsummer** Beta is your AI-powered reading assistant for longform text. Enter the longform text to summarise below:")
 
 if st.button('Let\'s Go!'):
 
